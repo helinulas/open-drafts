@@ -213,6 +213,11 @@
       opacity: 0.6;
     }
 
+    @media (max-width: 480px) {
+      .date-sep { display: none; }
+      .date-part { display: block; }
+    }
+
     footer {
       margin-top: 4rem;
       padding-top: 1.5rem;
@@ -246,7 +251,7 @@
           <span class="session-info"><a href="https://abdelammeer.com/" target="_blank">Abdelhamid Ameur</a> / <a href="https://merediththomas.co.uk/" target="_blank">Meredith Thomas</a></span>
         </li>
         <li>
-          <span class="session-date">07.05 · 28.05 · 15.07</span>
+          <span class="session-date"><span class="date-part">07.05</span><span class="date-sep"> · </span><span class="date-part">28.05</span><span class="date-sep"> · </span><span class="date-part">15.07</span></span>
           <span class="session-info" style="color:var(--color-muted)">More information soon</span>
         </li>
       </ul>
