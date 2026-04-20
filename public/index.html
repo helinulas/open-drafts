@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open Drafts</title>
+  <style>
+    @font-face {
+      font-family: 'NaNTragedy';
+      src: url('fonts/NaNTragedyDisplay-Black.woff2') format('woff2');
+      font-weight: 900;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'NaNTragedy';
+      src: url('fonts/NaNTragedyDisplay-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'NaNTragedyText';
+      src: url('fonts/NaNTragedyText-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'NaNTragedyText';
+      src: url('fonts/NaNTragedyText-Italic.woff2') format('woff2');
+      font-weight: 400;
+      font-style: italic;
+    }
+    @font-face {
+      font-family: 'NaNTragedyText';
+      src: url('fonts/NaNTragedyText-Bold.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-bg: #f5f4f0;
+      --color-text: #111;
+      --color-muted: #555;
+      --color-link: #111;
+      --color-rule: #111;
+      --max-width: 680px;
+    }
+
+    html {
+      font-size: 18px;
+    }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      font-family: 'NaNTragedyText', Georgia, serif;
+      font-weight: 400;
+      line-height: 1.6;
+      padding: 3rem 1.5rem 6rem;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1.5px solid var(--color-rule);
+    }
+
+    h1 {
+      font-family: 'NaNTragedy', serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 10vw, 5.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    .tagline {
+      font-size: 0.95rem;
+      color: var(--color-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .intro {
+      margin-bottom: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1.5px solid var(--color-rule);
+    }
+
+    .intro p {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .intro p:last-child {
+      margin-bottom: 0;
+    }
+
+    .intro em {
+      font-style: italic;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      font-family: 'NaNTragedy', serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.25rem;
+    }
+
+    .sessions {
+      list-style: none;
+    }
+
+    .sessions li {
+      display: grid;
+      grid-template-columns: 3.5rem 1fr;
+      gap: 0 1rem;
+      padding: 0.6rem 0;
+      border-top: 1px solid #ccc;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .sessions li:last-child {
+      border-bottom: 1px solid #ccc;
+    }
+
+    .session-date {
+      font-family: 'NaNTragedyText', serif;
+      font-weight: 700;
+      color: var(--color-muted);
+      font-size: 0.85rem;
+      padding-top: 0.05em;
+    }
+
+    .session-info {
+      color: var(--color-text);
+    }
+
+    .session-note {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--color-muted);
+      font-style: italic;
+      margin-top: 0.15rem;
+    }
+
+    .contact-section {
+      border-top: 1.5px solid var(--color-rule);
+      padding-top: 2rem;
+    }
+
+    .contact-section p {
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.6;
+    }
+
+    .contact-list {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .contact-list li {
+      font-size: 0.9rem;
+      padding: 0.2rem 0;
+    }
+
+    a {
+      color: var(--color-link);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    a:hover {
+      opacity: 0.6;
+    }
+
+    footer {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1.5px solid var(--color-rule);
+      font-size: 0.8rem;
+      color: var(--color-muted);
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <h1>Open<br>Drafts</h1>
+      <p class="tagline">Research Colloquium — HfG Karlsruhe</p>
+    </header>
+
+    <div class="intro">
+      <p>Open Draft is a research colloquium focusing on open-ended questions. We invite researchers and practitioners across the HfG to present their ongoing research projects.</p>
+      <p>What are you curious about right now? What are some the ideas that you are toying with? What presentation formats are you trying out? What dead-ends are you looking for a way out of?</p>
+      <p>We convene monthly at the HfG to offer a space to exchange, workshop and bounce ideas across disciplines and career stages.</p>
+      <p>All sessions take place at the <em>Lichtbrücke</em> and start at 18:00. Sessions are based around an open-ended format, where presenters are encouraged to highlight their current interrogations, problems and intuitions.</p>
+    </div>
+
+    <section>
+      <h2>Winter Semester 2025–26</h2>
+      <ul class="sessions">
+        <li>
+          <span class="session-date">16.10</span>
+          <span class="session-info">Introductory session / Pierre Depaz (KuPhi)</span>
+        </li>
+        <li>
+          <span class="session-date">20.11</span>
+          <span class="session-info">Helin Ulas (MK) / Karolina Sobel (MK)</span>
+        </li>
+        <li>
+          <span class="session-date">11.12</span>
+          <span class="session-info">Lydia Xynogala (KuPhi) / Mario Guzman (La Rochelle Université)
+            <span class="session-note">Starting at 17:00</span>
+          </span>
+        </li>
+        <li>
+          <span class="session-date">22.01</span>
+          <span class="session-info">Nina Overkott (KD) &amp; Bruno Jacoby (HfG Offenbach) / Paolo Caffoni (KuPhi)</span>
+        </li>
+        <li>
+          <span class="session-date">05.02</span>
+          <span class="session-info">Idis Hartmann (ZKM) / Julia Modes (KuPhi)</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Summer Semester 2026 will be added here -->
+
+    <div class="contact-section">
+      <p>If you would like to participate and share some of your on-going work, don't hesitate to write one of the organizers:</p>
+      <ul class="contact-list">
+        <li><a href="mailto:lxynogala@hfg-karlsruhe.de">lxynogala@hfg-karlsruhe.de</a></li>
+        <li><a href="mailto:hulas@hfg-karlsruhe.de">hulas@hfg-karlsruhe.de</a></li>
+      </ul>
+    </div>
+
+    <footer>
+      HfG Karlsruhe 2025/2026
+    </footer>
+
+  </div>
+</body>
+</html>
