@@ -43,7 +43,7 @@
     }
 
     :root {
-      --color-bg: #eef0f3;
+      --color-bg: #f7f8fa;
       --color-text: #111;
       --color-muted: #555;
       --color-link: #111;
@@ -67,6 +67,7 @@
     .container {
       max-width: var(--max-width);
       margin: 0 auto;
+      overflow: visible;
     }
 
     header {
@@ -115,6 +116,14 @@
       margin-bottom: 3rem;
     }
 
+    section.current {
+      border: 1.5px solid var(--color-rule);
+      border-radius: 30px;
+      padding: 1.75rem 2rem;
+      background-color: #ffffff;
+      overflow: hidden;
+    }
+
     h2 {
       font-family: 'NaNTragedy', serif;
       font-weight: 900;
@@ -139,7 +148,7 @@
 
     .sessions li {
       display: grid;
-      grid-template-columns: 3.5rem 1fr;
+      grid-template-columns: auto 1fr;
       gap: 0 1rem;
       padding: 0.6rem 0;
       border-top: 1px solid #ccc;
@@ -157,6 +166,8 @@
       color: var(--color-muted);
       font-size: 0.85rem;
       padding-top: 0.05em;
+      white-space: nowrap;
+      padding-right: 1rem;
     }
 
     .session-info {
@@ -227,7 +238,7 @@
       <p>All sessions take place at the <em>Lichtbrücke</em> and start at 18:00. Sessions are based around an open-ended format, where presenters are encouraged to highlight their current interrogations, problems and intuitions.</p>
     </div>
 
-    <section>
+    <section class="current">
       <h2>Summer Semester 2026</h2>
       <ul class="sessions">
         <li>
@@ -235,16 +246,8 @@
           <span class="session-info"><a href="https://abdelammeer.com/" target="_blank">Abdelhamid Ameur</a> / <a href="https://merediththomas.co.uk/" target="_blank">Meredith Thomas</a></span>
         </li>
         <li>
-          <span class="session-date">07.05</span>
-          <span class="session-info"><span class="session-note" style="font-style:normal;color:var(--color-muted)">More information soon</span></span>
-        </li>
-        <li>
-          <span class="session-date">28.05</span>
-          <span class="session-info"><span class="session-note" style="font-style:normal;color:var(--color-muted)">More information soon</span></span>
-        </li>
-        <li>
-          <span class="session-date">15.07</span>
-          <span class="session-info"><span class="session-note" style="font-style:normal;color:var(--color-muted)">More information soon</span></span>
+          <span class="session-date">07.05 · 28.05 · 15.07</span>
+          <span class="session-info" style="color:var(--color-muted)">More information soon</span>
         </li>
       </ul>
     </section>
