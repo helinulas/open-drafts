@@ -45,7 +45,7 @@
     :root {
       --color-bg: #f7f8fa;
       --color-text: #111;
-      --color-muted: #555;
+      --color-muted: #111;
       --color-link: #111;
       --color-rule: #111;
       --max-width: 680px;
@@ -214,6 +214,51 @@
       opacity: 0.6;
     }
 
+    .expandable-li { display: flex !important; flex-direction: column !important; align-items: stretch !important; }
+
+    .li-row {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0 1rem;
+      align-items: center;
+      width: 100%;
+    }
+
+    .expand-btn {
+      background: #111;
+      border: 1px solid #111;
+      border-radius: 50%;
+      color: #fff;
+      cursor: pointer;
+      font-size: 0.7rem;
+      line-height: 1;
+      width: 1.05rem;
+      height: 1.05rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 0.5rem;
+      transition: transform 0.25s ease, opacity 0.2s;
+      flex-shrink: 0;
+      padding: 0;
+    }
+    .expand-btn:hover { opacity: 0.7; }
+    .expand-btn.open  { transform: rotate(45deg); }
+
+    .expand-content {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.3s ease;
+    }
+    .expand-content.open { grid-template-rows: 1fr; }
+    .expand-content > p {
+      overflow: hidden;
+      font-size: 0.88rem;
+      color: var(--color-text);
+      line-height: 1.7;
+      padding: 0.6rem 0 0.4rem 0;
+    }
+
     @media (max-width: 480px) {
       .date-sep { display: none; }
       .date-part { display: block; }
@@ -255,8 +300,20 @@
           <span class="session-date">07.05</span>
           <span class="session-info"><a href="https://zkm.de/de/personen/clara-runge" target="_blank">Clara Runge</a> (ZKM) — <em><a href="https://zkm.de/en/2026/11/hidden-on-tape-early-video-art-in-europe" target="_blank">Hidden on Tape</a></em></span>
         </li>
+        <li class="expandable-li">
+          <div class="li-row">
+            <span class="session-date">28.05</span>
+            <span class="session-info">
+              <a href="http://www.misterpaulbailey.com/" target="_blank">Prof. Paul Bailey</a> (HfG) – <em>Compilation v.5</em>
+              <button class="expand-btn" onclick="toggleExpand(this)" aria-expanded="false">+</button>
+            </span>
+          </div>
+          <div class="expand-content">
+            <p>Prof. Paul Bailey (HfG) will perform an active essay drawn from his intermittent PhD research on the visual essay as a critical instrument within/through contemporary practices of communication design. Taking <em>Meeting Grounds: Essay as Event</em> as its point of departure — gatherings at Centre for Other Worlds (PT), Kunsthal Gent (BE), Camden Arts Centre (UK), and ZKM Pavillon (DE) with Brian Dillon, Ima-Abasi Okon, Katja Mater, Metahaven, Kameelah Janan Rasheed, and Dayna Casey — the presentation will explore modes of essaying that are active, wayward, incomplete, relational, and resolutely ongoing, and ask what such modes might offer a discipline structurally oriented toward resolution.</p>
+          </div>
+        </li>
         <li>
-          <span class="session-date"><span class="date-part">28.05</span><span class="date-sep"> · </span><span class="date-part">15.07</span></span>
+          <span class="session-date">15.07</span>
           <span class="session-info" style="color:var(--color-muted)">More information soon</span>
         </li>
       </ul>
@@ -304,5 +361,14 @@
     </footer>
 
   </div>
+<script>
+  function toggleExpand(btn) {
+    const li      = btn.closest('.expandable-li');
+    const content = li.querySelector('.expand-content');
+    const isOpen  = content.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    btn.setAttribute('aria-expanded', isOpen);
+  }
+</script>
 </body>
 </html>
