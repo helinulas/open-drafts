@@ -314,6 +314,41 @@
       aspect-ratio: 4/3;
       object-fit: cover;
       display: block;
+      cursor: zoom-in;
+      transition: opacity 0.2s;
+    }
+    .photo-grid img:hover { opacity: 0.85; }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(247, 248, 250, 0.5);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+    .lightbox img {
+      position: relative;
+      max-width: min(90vw, 780px);
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 6px;
+      box-shadow: 0 8px 48px rgba(0,0,0,0.18);
+      animation: lb-in 0.22s ease;
+    }
+    @keyframes lb-in {
+      from { opacity: 0; transform: scale(0.94); }
+      to   { opacity: 1; transform: scale(1); }
     }
 
     @media (max-width: 480px) {
@@ -430,6 +465,13 @@
     </footer>
 
   </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <div class="lightbox-backdrop"></div>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
 <script>
   function togglePhotos(btn) {
     const li      = btn.closest('.expandable-li');
@@ -438,6 +480,29 @@
     btn.classList.toggle('open', isOpen);
     btn.setAttribute('aria-expanded', isOpen);
   }
+
+  // Wire up photo grid clicks after DOM ready
+  document.querySelectorAll('.photo-grid img').forEach(img => {
+    img.addEventListener('click', () => openLightbox(img.src, img.alt));
+  });
+
+  function openLightbox(src, alt) {
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    lbImg.src = src;
+    lbImg.alt = alt;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
 
   function toggleExpand(btn) {
     const li      = btn.closest('.expandable-li');
