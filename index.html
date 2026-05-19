@@ -183,6 +183,11 @@
       margin-top: 0.15rem;
     }
 
+    .rgb-link {
+      color: rgb(0, 0, 255);
+      text-decoration-color: rgb(0, 0, 255);
+    }
+
     .contact-section {
       border-top: 1.5px solid var(--color-rule);
       padding-top: 2rem;
@@ -237,7 +242,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      margin-left: 0.5rem;
+      margin-left: 0;
       transition: transform 0.25s ease, opacity 0.2s;
       flex-shrink: 0;
       padding: 0;
@@ -246,17 +251,69 @@
     .expand-btn.open  { transform: rotate(45deg); }
 
     .expand-content {
-      display: grid;
-      grid-template-rows: 0fr;
-      transition: grid-template-rows 0.3s ease;
-    }
-    .expand-content.open { grid-template-rows: 1fr; }
-    .expand-content > p {
       overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.35s ease;
+    }
+    .expand-content.open { max-height: 600px; }
+    .expand-content > p {
       font-size: 0.88rem;
       color: var(--color-text);
       line-height: 1.7;
       padding: 0.6rem 0 0.4rem 0;
+    }
+
+    .archive-btn {
+      background: #111;
+      border: 1px solid #111;
+      border-radius: 50%;
+      color: #fff;
+      cursor: pointer;
+      width: 1.05rem;
+      height: 1.05rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-left: 0.5rem;
+      padding: 0;
+      transition: opacity 0.2s, transform 0.25s ease;
+    }
+    .archive-btn:hover { opacity: 0.7; }
+    .archive-btn.open  { transform: rotate(45deg); }
+
+    /* 2×2 grid icon inside button */
+    .archive-btn .grid-icon {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5px;
+      width: 7px;
+      height: 7px;
+    }
+    .archive-btn .grid-icon span {
+      background: #fff;
+      display: block;
+      border-radius: 0.5px;
+    }
+
+    .photo-content {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.4s ease;
+    }
+    .photo-content.open { max-height: 400px; }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      padding: 0.75rem 0 0.25rem;
+    }
+    .photo-grid img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
     }
 
     @media (max-width: 480px) {
@@ -296,15 +353,27 @@
           <span class="session-date">23.04</span>
           <span class="session-info"><a href="https://abdelammeer.com/" target="_blank">Abdelhamid Ameur</a> (KD) / <a href="https://merediththomas.co.uk/" target="_blank">Meredith Thomas</a></span>
         </li>
-        <li>
-          <span class="session-date">07.05</span>
-          <span class="session-info"><a href="https://zkm.de/de/personen/clara-runge" target="_blank">Clara Runge</a> (ZKM) — <em><a href="https://zkm.de/en/2026/11/hidden-on-tape-early-video-art-in-europe" target="_blank">Hidden on Tape</a></em></span>
+        <li class="expandable-li">
+          <div class="li-row">
+            <span class="session-date">07.05</span>
+            <span class="session-info" style="display:flex; align-items:center; justify-content:space-between;">
+              <span><a href="https://zkm.de/de/personen/clara-runge" target="_blank">Clara Runge</a> (ZKM) — <em><a href="https://zkm.de/en/2026/11/hidden-on-tape-early-video-art-in-europe" target="_blank">Hidden on Tape</a></em></span>
+              <button class="archive-btn" onclick="togglePhotos(this)" aria-expanded="false" aria-label="Show photos"><span class="grid-icon"><span></span><span></span><span></span><span></span></span></button>
+            </span>
+          </div>
+          <div class="photo-content">
+            <div class="photo-grid">
+              <img src="images/clara-1.jpg" alt="Photo 1">
+              <img src="images/clara-2.jpg" alt="Photo 2">
+              <img src="images/clara-3.jpg" alt="Photo 3">
+            </div>
+          </div>
         </li>
         <li class="expandable-li">
           <div class="li-row">
             <span class="session-date">28.05</span>
-            <span class="session-info">
-              <a href="http://www.misterpaulbailey.com/" target="_blank">Prof. Paul Bailey</a> (HfG) – <em>Compilation v.5</em>
+            <span class="session-info" style="display:flex; align-items:center; justify-content:space-between;">
+              <span><a href="http://www.misterpaulbailey.com/" target="_blank">Prof. Paul Bailey</a> (HfG) – <em>Compilation v.5</em></span>
               <button class="expand-btn" onclick="toggleExpand(this)" aria-expanded="false">+</button>
             </span>
           </div>
@@ -351,17 +420,25 @@
     <div class="contact-section">
       <p>If you would like to participate and share some of your on-going work, don't hesitate to write one of the organizers:</p>
       <ul class="contact-list">
-        <li><a href="mailto:lxynogala@hfg-karlsruhe.de">lxynogala@hfg-karlsruhe.de</a></li>
-        <li><a href="mailto:hulas@hfg-karlsruhe.de">hulas@hfg-karlsruhe.de</a></li>
+        <li><a href="mailto:lxynogala@hfg-karlsruhe.de" class="rgb-link">lxynogala@hfg-karlsruhe.de</a></li>
+        <li><a href="mailto:hulas@hfg-karlsruhe.de" class="rgb-link">hulas@hfg-karlsruhe.de</a></li>
       </ul>
     </div>
 
     <footer>
-      <a href="https://hfg-karlsruhe.de/" target="_blank">HfG Karlsruhe</a> 2025/2026
+      <a href="https://hfg-karlsruhe.de/" target="_blank" class="rgb-link">HfG Karlsruhe</a> 2025/2026
     </footer>
 
   </div>
 <script>
+  function togglePhotos(btn) {
+    const li      = btn.closest('.expandable-li');
+    const content = li.querySelector('.photo-content');
+    const isOpen  = content.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    btn.setAttribute('aria-expanded', isOpen);
+  }
+
   function toggleExpand(btn) {
     const li      = btn.closest('.expandable-li');
     const content = li.querySelector('.expand-content');
