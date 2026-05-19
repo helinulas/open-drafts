@@ -333,21 +333,22 @@
     .lightbox-backdrop {
       position: absolute;
       inset: 0;
-      background: rgba(247, 248, 250, 0.5);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      background: rgba(247, 248, 250, 0.35);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
     .lightbox img {
       position: relative;
-      max-width: min(90vw, 780px);
-      max-height: 88vh;
+      width: min(340px, 45vw);
+      height: auto;
       object-fit: contain;
       border-radius: 6px;
-      box-shadow: 0 8px 48px rgba(0,0,0,0.18);
-      animation: lb-in 0.22s ease;
+      box-shadow: 0 6px 32px rgba(0,0,0,0.15);
+      animation: lb-in 0.2s ease;
+      cursor: zoom-out;
     }
     @keyframes lb-in {
-      from { opacity: 0; transform: scale(0.94); }
+      from { opacity: 0; transform: scale(0.96); }
       to   { opacity: 1; transform: scale(1); }
     }
 
