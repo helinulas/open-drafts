@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 100">
+  <rect width="120" height="100" fill="#f7f8fa"/>
+
+  <!-- HfG diagonal mark: matrix maps original coords directly into the 120×100 viewBox -->
+  <!-- Centred horizontally, mark occupies y≈16–54, leaving room for text below -->
+  <g transform="matrix(1.733e-5,0,0,1.733e-5,-171.0,6.9)" style="fill:#111;fill-rule:evenodd;">
+    <path d="M 10976130,506880 L 10157330,2180380 L 10409620,2180380 L 11221010,506880 Z"/>
+    <path d="M 11843630,506880 L 11024900,2180380 L 11277110,2180380 L 12089030,506880 Z"/>
+    <path d="M 12438130,1066060 L 11619400,2739300 L 11871620,2739300 L 12683270,1066060 Z"/>
+    <path d="M 13306150,1066060 L 12487160,2739300 L 12739640,2739300 L 13551220,1066060 Z"/>
+    <path d="M 14447430,506880 L 13628690,2180380 L 13880910,2180380 L 14692300,506880 Z"/>
+    <path d="M 15041670,1066060 L 14222680,2739300 L 14474890,2739300 L 15286550,1066060 Z"/>
+    <path d="M 16183200,506880 L 15364020,2180380 L 15688640,2180380 L 16500030,506880 Z"/>
+  </g>
+
+  <text
+    x="60" y="78"
+    font-family="Georgia, serif"
+    font-size="10"
+    text-anchor="middle"
+    fill="#111"
+    letter-spacing="0.5">OPEN DRAFTS</text>
+</svg>
