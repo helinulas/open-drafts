@@ -28,6 +28,13 @@ module.exports = function(eleventyConfig) {
       .sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
   });
 
+  // Filter: ensure URL has https:// prefix
+  eleventyConfig.addFilter("ensureHttps", function(url) {
+    if (!url) return url;
+    if (!url.startsWith("http")) return "https://" + url;
+    return url;
+  });
+
   // Filter: render markdown string
   eleventyConfig.addFilter("markdownify", function(str) {
     if (!str) return "";
