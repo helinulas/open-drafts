@@ -1,4 +1,5 @@
 ---
+name: "Clara Runge"
 semester: summer-2026
 order: 2
 speakers:

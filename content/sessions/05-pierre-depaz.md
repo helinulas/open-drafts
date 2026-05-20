@@ -1,4 +1,5 @@
 ---
+name: "Introductory session / Pierre Depaz"
 semester: winter-2025-26
 order: 1
 speakers:

@@ -12,8 +12,10 @@ collections:
     folder: "content/sessions"
     create: true
     slug: "{{order}}-{{slug}}"
+    identifier_field: "name"
     sortable_fields: ["order", "date", "semester"]
     fields:
+      - { label: "Display name", name: "name", widget: "string", hint: "Speaker name(s) as shown in the CMS list, e.g. Clara Runge or Abdelhamid Ameur / Meredith Thomas" }
       - { label: "Semester", name: "semester", widget: "relation", collection: "semesters", search_fields: ["label"], value_field: "id", display_fields: ["label"] }
       - { label: "Order", name: "order", widget: "number", value_type: "int", default: 1 }
       - label: "Speakers"

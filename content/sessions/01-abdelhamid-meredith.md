@@ -1,4 +1,5 @@
 ---
+name: "Abdelhamid Ameur / Meredith Thomas"
 semester: summer-2026
 order: 1
 speakers:

@@ -1,4 +1,5 @@
 ---
+name: "Idis Hartmann / Julia Modes"
 semester: winter-2025-26
 order: 5
 speakers:

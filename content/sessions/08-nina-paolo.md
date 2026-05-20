@@ -1,4 +1,5 @@
 ---
+name: "Nina Overkott / Paolo Caffoni"
 semester: winter-2025-26
 order: 4
 speakers:

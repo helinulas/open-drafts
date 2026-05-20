@@ -1,4 +1,5 @@
 ---
+name: "Lydia Xynogala / Mario Guzman"
 semester: winter-2025-26
 order: 3
 speakers:

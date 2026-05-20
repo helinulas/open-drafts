@@ -1,4 +1,5 @@
 ---
+name: "Helin Ulas / Karolina Sobel"
 semester: winter-2025-26
 order: 2
 speakers:

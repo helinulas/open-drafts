@@ -1,4 +1,5 @@
 ---
+name: "TBA"
 semester: summer-2026
 order: 4
 speakers: []

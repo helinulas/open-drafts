@@ -1,4 +1,5 @@
 ---
+name: "Prof. Paul Bailey"
 semester: summer-2026
 order: 3
 speakers:
