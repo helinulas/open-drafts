@@ -13,5 +13,9 @@ affiliation: "KuPhi"
 event_date: "11.12.25"
 upnext: false
 tags: []
-photos: []
+photos:
+  - src: "/images/IMG_6172.jpeg"
+  - src: "/images/IMG_6178.jpeg"
+  - src: "/images/IMG_6192.jpeg"
+  - src: "/images/IMG_6222.jpeg"
 ---

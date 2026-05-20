@@ -13,5 +13,9 @@ affiliation: "ZKM / KuPhi"
 event_date: "05.02.26"
 upnext: false
 tags: []
-photos: []
+photos:
+  - src: "/images/IMG_7209.jpeg"
+  - src: "/images/IMG_7236.jpeg"
+  - src: "/images/IMG_7276.jpeg"
+  - src: "/images/IMG_7283.jpeg"
 ---

@@ -13,5 +13,8 @@ affiliation: MK
 event_date: 20.11.25
 upnext: false
 tags: []
-photos: []
+photos:
+  - src: "/images/IMG_6267.jpeg"
+  - src: "/images/IMG_6279.jpeg"
+  - src: "/images/IMG_6288.jpeg"
 ---
