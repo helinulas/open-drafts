@@ -204,18 +204,20 @@
     /* ── Up Next styling — apply .is-upnext to the <li> to activate ── */
     .is-upnext .row-num {
       position: relative;
+      color: #111;
     }
     .is-upnext .row-num::before {
       content: '';
       position: absolute;
       top: 50%;
-      left: -0.3rem;
-      transform: translateY(-50%);
+      left: 0.55rem;
+      transform: translate(-50%, -50%);
       width: 1.7rem;
       height: 1.7rem;
-      border: 1.5px solid #60BB4D;
+      background: #60BB4D;
       border-radius: 50%;
       pointer-events: none;
+      z-index: -1;
     }
     .is-upnext .upnext-label {
       font-size: 0.7rem;
