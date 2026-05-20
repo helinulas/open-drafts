@@ -28,7 +28,10 @@ layout: base.njk
 {% set archiveShown = false %}
 
 {% for sem in semesters %}
-  {# Show Archive heading before the first archive semester #}
+  {# Show section heading before each status group #}
+  {% if sem.status === "current" and loop.first %}
+    <div class="archive-heading">Current</div>
+  {% endif %}
   {% if sem.status === "archive" and not archiveShown %}
     <div class="archive-heading">Archive</div>
     {% set archiveShown = true %}
