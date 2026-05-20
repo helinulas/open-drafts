@@ -4,6 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Open Drafts — Research Colloquium</title>
+  <script>
+    // Redirect Netlify Identity tokens to /admin
+    if (window.location.hash && (
+      window.location.hash.indexOf('recovery_token') !== -1 ||
+      window.location.hash.indexOf('invite_token') !== -1 ||
+      window.location.hash.indexOf('confirmation_token') !== -1
+    )) {
+      window.location.href = '/admin' + window.location.hash;
+    }
+  </script>
   <style>
     @font-face {
       font-family: 'NaNTragedy';
