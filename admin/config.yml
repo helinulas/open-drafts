@@ -23,10 +23,10 @@ collections:
         widget: "list"
         fields:
           - { label: "Name", name: "name", widget: "string" }
-          - { label: "URL", name: "url", widget: "string", required: false }
+          - { label: "URL", name: "url", widget: "string", required: false, hint: "Must start with https://" }
       - { label: "Separator between speakers/title", name: "separator", widget: "select", options: ["/", "—", ""], default: "/", required: false }
       - { label: "Talk title", name: "title", widget: "string", required: false }
-      - { label: "Talk title URL", name: "title_url", widget: "string", required: false }
+      - { label: "Talk title URL", name: "title_url", widget: "string", required: false, hint: "Must start with https://" }
       - { label: "Affiliation", name: "affiliation", widget: "string", required: false, hint: "e.g. KD, ZKM, KuPhi, MK — or combined: KD / KuPhi" }
       - { label: "Date", name: "event_date", widget: "string", hint: "e.g. 28.05 or 28.05.26" }
       - { label: "Up Next", name: "upnext", widget: "boolean", default: false }

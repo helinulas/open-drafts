@@ -1,6 +1,8 @@
 ---
 layout: base.njk
 ---
+{# Ensure URLs are absolute #}
+{% macro safeUrl(url) %}{% if url and not url.startswith('http') %}https://{{ url }}{% else %}{{ url }}{% endif %}{% endmacro %}
 
 <div class="header-line">
   <h1>Open&nbsp;Drafts</h1>
@@ -82,7 +84,7 @@ layout: base.njk
                   &nbsp;{{ session.data.separator }}&nbsp;
                 {% endif %}
                 {% if speaker.url %}
-                  <a href="{{ speaker.url }}" target="_blank"{% if hasDetail %} onclick="event.stopPropagation()"{% endif %}>{{ speaker.name }}</a>
+                  <a href="{{ safeUrl(speaker.url) }}" target="_blank"{% if hasDetail %} onclick="event.stopPropagation()"{% endif %}>{{ speaker.name }}</a>
                 {% else %}
                   {{ speaker.name }}
                 {% endif %}
@@ -90,7 +92,7 @@ layout: base.njk
 
               {# Render title if present #}
               {% if session.data.title %}
-                &nbsp;{{ session.data.separator }}&nbsp;<em>{% if session.data.title_url %}<a href="{{ session.data.title_url }}" target="_blank"{% if hasDetail %} onclick="event.stopPropagation()"{% endif %}>{{ session.data.title }}</a>{% else %}{{ session.data.title }}{% endif %}</em>
+                &nbsp;{{ session.data.separator }}&nbsp;<em>{% if session.data.title_url %}<a href="{{ safeUrl(session.data.title_url) }}" target="_blank"{% if hasDetail %} onclick="event.stopPropagation()"{% endif %}>{{ session.data.title }}</a>{% else %}{{ session.data.title }}{% endif %}</em>
               {% endif %}
 
               {# Up next label #}
