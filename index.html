@@ -374,7 +374,15 @@
 
     @media (max-width: 600px) {
       body { padding: 1.25rem 1rem 5rem; }
-      h1 { font-size: clamp(2.2rem, 12vw, 3.5rem); margin-bottom: 1rem; }
+
+      /* Stack header title + tagline vertically */
+      .header-line {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+      }
+      h1 { font-size: clamp(2.2rem, 12vw, 3.5rem); margin-bottom: 0; }
+      .tagline { white-space: normal; font-size: 0.9rem; }
 
       .intro-row, .bottom-row {
         grid-template-columns: 1fr;
