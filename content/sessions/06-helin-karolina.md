@@ -6,7 +6,7 @@ speakers:
   - name: Helin Ulas
     url: helinulas.info
   - name: Karolina Sobel
-    url: ""
+    url: www.karolinasobel.com/
 separator: /
 title: ""
 affiliation: MK
