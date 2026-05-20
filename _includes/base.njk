@@ -4,14 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Open Drafts — Research Colloquium</title>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script>
-    // Redirect Netlify Identity tokens to /admin
-    if (window.location.hash && (
-      window.location.hash.indexOf('recovery_token') !== -1 ||
-      window.location.hash.indexOf('invite_token') !== -1 ||
-      window.location.hash.indexOf('confirmation_token') !== -1
-    )) {
-      window.location.href = '/admin' + window.location.hash;
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
     }
   </script>
   <style>
