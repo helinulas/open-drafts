@@ -67,7 +67,8 @@ layout: base.njk
 
       <li class="session-row{% if hasDetail %} has-detail{% endif %}{% if session.data.upnext %} is-upnext{% endif %}"
           {% if hasDetail %}id="{{ rowId }}"{% endif %}
-          {% if hasDetail %}onclick="toggleExpand('{{ rowId }}')"{% endif %}>
+          {% if hasDetail %}onclick="toggleExpand('{{ rowId }}')"{% endif %}
+          style="--accent: {{ color.bg }}; --accent-text: {{ color.text }}">
 
         <div class="row-main">
           <span class="row-num">{{ rowNum }}</span>
@@ -104,7 +105,7 @@ layout: base.njk
             {% if session.data.affiliation %}
               <span class="tag tag-affil">{{ session.data.affiliation }}</span>
             {% endif %}
-            <span class="tag tag-date {% if session.data.upnext %}tag-upnext{% else %}{{ color.cls }}{% endif %}">{{ session.data.event_date }}</span>
+            <span class="tag tag-date {{ color.cls }}">{{ session.data.event_date }}</span>
             {% if hasBody %}
               <button class="tag" onclick="event.stopPropagation(); toggleExpand('{{ rowId }}')" title="Notes">+</button>
             {% endif %}

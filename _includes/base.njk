@@ -214,20 +214,15 @@
       transform: translate(-50%, -50%);
       width: 1.7rem;
       height: 1.7rem;
-      background: #60BB4D;
+      background: var(--accent, #60BB4D);
       border-radius: 50%;
       pointer-events: none;
       z-index: -1;
     }
     .is-upnext .upnext-label {
       font-size: 0.7rem;
-      color: #60BB4D;
+      color: var(--accent, #60BB4D);
       font-style: normal;
-    }
-    .tag-upnext {
-      background: #60BB4D;
-      color: #fff;
-      border-color: transparent;
     }
 
     .row-name {
@@ -267,6 +262,7 @@
       background: none;
       cursor: pointer;
       transition: background 0.15s, color 0.15s;
+      min-height: calc(0.75rem + 0.36rem);
     }
     button.tag:hover {
       background: #111;
@@ -276,14 +272,15 @@
       background: #111;
       color: #fff;
     }
+    button.tag[title="Notes"] { font-size: 0.9rem; }
 
     /* grid icon for photos button */
     .grid-icon {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2px;
-      width: 9px;
-      height: 9px;
+      width: 8px;
+      height: 8px;
     }
     .grid-icon span { background: currentColor; display: block; border-radius: 0.5px; }
 
@@ -423,8 +420,9 @@
         grid-template-columns: 2.2rem 1fr;
         grid-template-rows: auto auto;
         column-gap: 0.75rem;
-        row-gap: 0.5rem;
+        row-gap: 0.35rem;
         align-items: start;
+        padding: 0.85rem 0;
       }
       .row-num  { grid-column: 1; grid-row: 1 / 3; align-self: center; }
       .row-name { grid-column: 2; grid-row: 1; font-size: 0.85rem; }
