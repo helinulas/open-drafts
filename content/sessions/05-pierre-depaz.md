@@ -4,7 +4,7 @@ semester: winter-2025-26
 order: 1
 speakers:
   - name: "Introductory session / Pierre Depaz"
-    url: ""
+    url: "https://pierredepaz.net"
 title: ""
 separator: ""
 affiliation: "KuPhi"

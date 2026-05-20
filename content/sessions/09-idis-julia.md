@@ -4,9 +4,9 @@ semester: winter-2025-26
 order: 5
 speakers:
   - name: "Idis Hartmann"
-    url: ""
+    url: "https://zkm.de/de/idis-hartmann"
   - name: "Julia Modes"
-    url: ""
+    url: "http://kunstwissenschaft.hfg-karlsruhe.de/faculty/julia-modes/"
 separator: "/"
 title: ""
 affiliation: "ZKM / KuPhi"
@@ -17,5 +17,5 @@ photos:
   - src: "/images/IMG_7209.jpeg"
   - src: "/images/IMG_7236.jpeg"
   - src: "/images/IMG_7276.jpeg"
-  - src: "/images/IMG_7283.jpeg"
+    caption: "Julia Modes"
 ---

@@ -4,9 +4,9 @@ semester: winter-2025-26
 order: 3
 speakers:
   - name: "Lydia Xynogala"
-    url: ""
+    url: "https://alos.nyc/Info"
   - name: "Mario Guzman"
-    url: ""
+    url: "https://www.mario-guzman.com"
 separator: "/"
 title: ""
 affiliation: "KuPhi"
@@ -15,7 +15,6 @@ upnext: false
 tags: []
 photos:
   - src: "/images/IMG_6172.jpeg"
-  - src: "/images/IMG_6178.jpeg"
   - src: "/images/IMG_6192.jpeg"
   - src: "/images/IMG_6222.jpeg"
 ---

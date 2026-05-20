@@ -130,7 +130,7 @@ layout: base.njk
             <div class="detail-inner photos-only">
               <div class="detail-photos">
                 {% for photo in session.data.photos %}
-                  <img src="{{ photo.src }}" alt="{% if photo.caption %}{{ photo.caption }}{% endif %}" onclick="event.stopPropagation(); openLightbox(this.src)">
+                  <img src="{{ photo.src }}" alt="{% if photo.caption %}{{ photo.caption }}{% endif %}" onclick="event.stopPropagation(); openLightbox(this.src, '{% if photo.caption %}{{ photo.caption }}{% endif %}')">
                 {% endfor %}
               </div>
             </div>

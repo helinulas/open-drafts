@@ -366,12 +366,25 @@
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
-    .lightbox img {
+    .lightbox-inner {
       position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      animation: lb-in 0.2s ease;
+    }
+    .lightbox img {
       width: min(520px, 65vw); height: auto;
       border-radius: 4px;
       box-shadow: 0 6px 32px rgba(0,0,0,0.15);
-      animation: lb-in 0.2s ease;
+    }
+    .lightbox-caption {
+      font-size: 0.7rem;
+      color: #111;
+      margin-top: 0.4rem;
+      text-align: right;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      pointer-events: none;
     }
     @keyframes lb-in {
       from { opacity: 0; transform: scale(0.96); }
@@ -445,7 +458,10 @@
 <!-- Lightbox -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <div class="lightbox-backdrop"></div>
-  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-inner">
+    <img id="lightbox-img" src="" alt="">
+    <span class="lightbox-caption" id="lightbox-caption"></span>
+  </div>
 </div>
 
 <script>
@@ -465,8 +481,9 @@
     if (btn) btn.classList.toggle('open', isOpen);
   }
 
-  function openLightbox(src) {
+  function openLightbox(src, caption) {
     document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox-caption').textContent = caption || '';
     document.getElementById('lightbox').classList.add('open');
     document.body.style.overflow = 'hidden';
   }

@@ -4,9 +4,9 @@ semester: winter-2025-26
 order: 2
 speakers:
   - name: Helin Ulas
-    url: helinulas.info
+    url: https://helinulas.info
   - name: Karolina Sobel
-    url: www.karolinasobel.com/
+    url: https://karolinasobel.com
 separator: /
 title: ""
 affiliation: MK
