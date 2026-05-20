@@ -1,0 +1,77 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "sessions"
+    label: "Sessions"
+    label_singular: "Session"
+    folder: "content/sessions"
+    create: true
+    slug: "{{order}}-{{slug}}"
+    sortable_fields: ["order", "date", "semester"]
+    fields:
+      - { label: "Semester", name: "semester", widget: "relation", collection: "semesters", search_fields: ["label"], value_field: "id", display_fields: ["label"] }
+      - { label: "Order", name: "order", widget: "number", value_type: "int", default: 1 }
+      - label: "Speakers"
+        name: "speakers"
+        widget: "list"
+        fields:
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "URL", name: "url", widget: "string", required: false }
+      - { label: "Separator between speakers/title", name: "separator", widget: "select", options: ["/", "—", ""], default: "/", required: false }
+      - { label: "Talk title", name: "title", widget: "string", required: false }
+      - { label: "Talk title URL", name: "title_url", widget: "string", required: false }
+      - { label: "Affiliation", name: "affiliation", widget: "string", required: false, hint: "e.g. KD, ZKM, KuPhi, MK — or combined: KD / KuPhi" }
+      - { label: "Date", name: "event_date", widget: "string", hint: "e.g. 28.05 or 28.05.26" }
+      - { label: "Up Next", name: "upnext", widget: "boolean", default: false }
+      - { label: "TBA (more info soon)", name: "tba", widget: "boolean", default: false, required: false }
+      - label: "Extra tags"
+        name: "tags"
+        widget: "list"
+        required: false
+        field: { label: "Tag", name: "tag", widget: "string" }
+      - label: "Photos"
+        name: "photos"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Photo", name: "src", widget: "image" }
+          - { label: "Caption", name: "caption", widget: "string", required: false }
+          - label: "Photo tags"
+            name: "tags"
+            widget: "list"
+            required: false
+            field: { label: "Tag", name: "tag", widget: "string" }
+      - { label: "Info text", name: "body", widget: "markdown", required: false }
+
+  - name: "semesters"
+    label: "Semesters"
+    label_singular: "Semester"
+    folder: "content/semesters"
+    create: true
+    slug: "{{id}}"
+    fields:
+      - { label: "ID", name: "id", widget: "string", hint: "e.g. summer-2026" }
+      - { label: "Label", name: "label", widget: "string", hint: "e.g. Summer Semester 2026" }
+      - { label: "Status", name: "status", widget: "select", options: ["current", "archive"], default: "current" }
+      - { label: "Order", name: "order", widget: "number", value_type: "int", default: 1, hint: "Lower = shown first (current semesters show before archive)" }
+
+  - name: "site"
+    label: "Site Text"
+    files:
+      - label: "Site Settings"
+        name: "site"
+        file: "_data/site.yml"
+        fields:
+          - { label: "Intro paragraph 1", name: "intro_a_1", widget: "text" }
+          - { label: "Intro paragraph 2", name: "intro_a_2", widget: "text" }
+          - { label: "Intro paragraph 3", name: "intro_b_1", widget: "text" }
+          - { label: "Intro paragraph 4 (location/time)", name: "intro_b_2", widget: "text" }
+          - { label: "Contact text", name: "contact_text", widget: "string" }
+          - { label: "Email 1", name: "email_1", widget: "string" }
+          - { label: "Email 2", name: "email_2", widget: "string" }
+          - { label: "Year", name: "year", widget: "string" }

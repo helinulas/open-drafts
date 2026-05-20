@@ -1,0 +1,151 @@
+---
+layout: base.njk
+---
+
+<div class="header-line">
+  <h1>Open&nbsp;Drafts</h1>
+  <span class="tagline">(Research Colloquium)</span>
+</div>
+
+<div class="intro-row">
+  <div class="intro-col-a">
+    <p>{{ site.intro_a_1 }}</p>
+    <p>{{ site.intro_a_2 }}</p>
+  </div>
+  <div class="intro-col-b">
+    <p>{{ site.intro_b_1 }}</p>
+    <p>{{ site.intro_b_2 | safe }}</p>
+  </div>
+  <div class="intro-meta">
+    <a href="https://hfg-karlsruhe.de/" target="_blank">HfG Karlsruhe</a> {{ site.year }}
+  </div>
+</div>
+
+{# Build ordered list: current semesters first (by order asc), then archive #}
+{# We'll use _data/semesters.yml which is already in order: current first, archive second #}
+
+{% set globalIdx = 0 %}
+{% set archiveShown = false %}
+
+{% for sem in semesters %}
+  {# Show Archive heading before the first archive semester #}
+  {% if sem.status === "archive" and not archiveShown %}
+    <div class="archive-heading">Archive</div>
+    {% set archiveShown = true %}
+  {% endif %}
+
+  <div class="semester-label">{{ sem.label }}</div>
+  <ul class="session-table">
+
+    {% set semSessions = collections.sessions | bySemester(sem.id) %}
+    {% set currentSemNum = 0 %}
+
+    {% for session in semSessions %}
+      {# Determine row number: current = 01,02...; archive = — #}
+      {% if sem.status === "current" %}
+        {% set currentSemNum = currentSemNum + 1 %}
+        {% set rowNum = currentSemNum | string %}
+        {% if rowNum | length < 2 %}{% set rowNum = "0" + rowNum %}{% endif %}
+      {% else %}
+        {% set rowNum = "—" %}
+      {% endif %}
+
+      {# Color class based on global index #}
+      {% set color = globalIdx | colorForIndex %}
+      {% set globalIdx = globalIdx + 1 %}
+
+      {# Determine if this row has expandable detail #}
+      {% set hasBody = session.templateContent | trim | length > 0 %}
+      {% set hasPhotos = session.data.photos and session.data.photos | length > 0 %}
+      {% set hasDetail = hasBody or hasPhotos %}
+
+      {# Build a unique row ID from the file slug #}
+      {% set rowId = "row-" + session.fileSlug %}
+
+      <li class="session-row{% if hasDetail %} has-detail{% endif %}{% if session.data.upnext %} is-upnext{% endif %}"
+          {% if hasDetail %}id="{{ rowId }}"{% endif %}
+          {% if hasDetail %}onclick="toggleExpand('{{ rowId }}')"{% endif %}>
+
+        <div class="row-main">
+          <span class="row-num">{{ rowNum }}</span>
+
+          <span class="row-name{% if session.data.tba %} muted{% endif %}">
+            {% if session.data.tba %}
+              More information soon
+            {% else %}
+              {# Render speakers #}
+              {% for speaker in session.data.speakers %}
+                {% if not loop.first %}
+                  &nbsp;{{ session.data.separator }}&nbsp;
+                {% endif %}
+                {% if speaker.url %}
+                  <a href="{{ speaker.url }}" target="_blank"{% if hasDetail %} onclick="event.stopPropagation()"{% endif %}>{{ speaker.name }}</a>
+                {% else %}
+                  {{ speaker.name }}
+                {% endif %}
+              {% endfor %}
+
+              {# Render title if present #}
+              {% if session.data.title %}
+                &nbsp;{{ session.data.separator }}&nbsp;<em>{% if session.data.title_url %}<a href="{{ session.data.title_url }}" target="_blank"{% if hasDetail %} onclick="event.stopPropagation()"{% endif %}>{{ session.data.title }}</a>{% else %}{{ session.data.title }}{% endif %}</em>
+              {% endif %}
+
+              {# Up next label #}
+              {% if session.data.upnext %}
+                &nbsp;<span class="upnext-label">(up next)</span>
+              {% endif %}
+            {% endif %}
+          </span>
+
+          <div class="row-tags">
+            {% if session.data.affiliation %}
+              <span class="tag tag-affil">{{ session.data.affiliation }}</span>
+            {% endif %}
+            <span class="tag tag-date {% if session.data.upnext %}tag-upnext{% else %}{{ color.cls }}{% endif %}">{{ session.data.event_date }}</span>
+            {% if hasBody %}
+              <button class="tag" onclick="event.stopPropagation(); toggleExpand('{{ rowId }}')" title="Notes">+</button>
+            {% endif %}
+            {% if hasPhotos %}
+              <button class="tag" onclick="event.stopPropagation(); togglePhotos('{{ rowId }}')" title="Photos">
+                <span class="grid-icon"><span></span><span></span><span></span><span></span></span>
+              </button>
+            {% endif %}
+          </div>
+        </div>
+
+        {% if hasBody %}
+          <div class="row-detail" id="{{ rowId }}-expand">
+            <div class="detail-inner{% if not hasPhotos %} text-only{% endif %}">
+              <div class="detail-text">{{ session.templateContent | safe }}</div>
+            </div>
+          </div>
+        {% endif %}
+
+        {% if hasPhotos %}
+          <div class="row-detail" id="{{ rowId }}-photos">
+            <div class="detail-inner photos-only">
+              <div class="detail-photos">
+                {% for photo in session.data.photos %}
+                  <img src="{{ photo.src }}" alt="{% if photo.caption %}{{ photo.caption }}{% endif %}" onclick="event.stopPropagation(); openLightbox(this.src)">
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+
+      </li>
+    {% endfor %}
+
+  </ul>
+{% endfor %}
+
+<div class="bottom-row">
+  <div class="bottom-contact">
+    <p>{{ site.contact_text }}</p>
+    <p><a href="mailto:{{ site.email_1 }}">{{ site.email_1 }}</a></p>
+    <p><a href="mailto:{{ site.email_2 }}">{{ site.email_2 }}</a></p>
+  </div>
+  <div class="bottom-meta">
+    <a href="https://hfg-karlsruhe.de/" target="_blank">HfG Karlsruhe</a> {{ site.year }}
+  </div>
+</div>
