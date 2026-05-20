@@ -2,7 +2,7 @@
 layout: base.njk
 ---
 {# Ensure URLs are absolute #}
-{% macro safeUrl(url) %}{% if url and not url.startswith('http') %}https://{{ url }}{% else %}{{ url }}{% endif %}{% endmacro %}
+{% macro safeUrl(url) %}{% if url %}{% if url[0:4] !== 'http' %}https://{{ url }}{% else %}{{ url }}{% endif %}{% endif %}{% endmacro %}
 
 <div class="header-line">
   <h1>Open&nbsp;Drafts</h1>
