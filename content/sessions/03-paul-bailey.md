@@ -1,15 +1,15 @@
 ---
-name: "Prof. Paul Bailey"
+name: Prof. Paul Bailey
 semester: summer-2026
 order: 3
 speakers:
-  - name: "Prof. Paul Bailey"
-    url: "http://www.misterpaulbailey.com/"
-title: "Compilation v.5"
-separator: "—"
-affiliation: "KD"
+  - name: Prof. Paul Bailey
+    url: http://www.misterpaulbailey.com/
+separator: —
+title: Compilation v.5
+affiliation: KD
 event_date: "28.05"
-upnext: true
+upnext: false
 tags: []
 photos: []
 ---
