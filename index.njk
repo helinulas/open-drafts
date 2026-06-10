@@ -93,11 +93,11 @@ layout: base.njk
               {% if session.data.title %}
                 &nbsp;{{ session.data.separator }}&nbsp;<em>{% if session.data.title_url %}<a href="{{ session.data.title_url | ensureHttps }}" target="_blank"{% if hasDetail %} onclick="event.stopPropagation()"{% endif %}>{{ session.data.title }}</a>{% else %}{{ session.data.title }}{% endif %}</em>
               {% endif %}
+            {% endif %}
 
-              {# Up next label #}
-              {% if session.data.upnext %}
-                &nbsp;<span class="upnext-label">(up next)</span>
-              {% endif %}
+            {# Up next label — shown for any session, including TBA #}
+            {% if session.data.upnext %}
+              &nbsp;<span class="upnext-label">(up next)</span>
             {% endif %}
           </span>
 
