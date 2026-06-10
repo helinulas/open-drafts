@@ -4,18 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Open Drafts — Research Colloquium</title>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-    }
-  </script>
   <style>
     @font-face {
       font-family: 'NaNTragedy';
@@ -204,25 +192,28 @@
     /* ── Up Next styling — apply .is-upnext to the <li> to activate ── */
     .is-upnext .row-num {
       position: relative;
-      color: #111;
     }
     .is-upnext .row-num::before {
       content: '';
       position: absolute;
       top: 50%;
-      left: 0.55rem;
-      transform: translate(-50%, -50%);
+      left: -0.3rem;
+      transform: translateY(-50%);
       width: 1.7rem;
       height: 1.7rem;
-      background: var(--accent, #60BB4D);
+      border: 1.5px solid #60BB4D;
       border-radius: 50%;
       pointer-events: none;
-      z-index: -1;
     }
     .is-upnext .upnext-label {
       font-size: 0.7rem;
-      color: color-mix(in srgb, var(--accent, #60BB4D) 70%, #000 30%);
+      color: #60BB4D;
       font-style: normal;
+    }
+    .tag-upnext {
+      background: #60BB4D;
+      color: #fff;
+      border-color: transparent;
     }
 
     .row-name {
@@ -249,7 +240,7 @@
       justify-content: center;
       border: 1px solid #111;
       border-radius: 99px;
-      font-size: 0.75rem;
+      font-size: 0.65rem;
       letter-spacing: 0.04em;
       padding: 0.18rem 0.55rem;
       color: #111;
@@ -262,7 +253,6 @@
       background: none;
       cursor: pointer;
       transition: background 0.15s, color 0.15s;
-      min-height: calc(0.75rem + 0.36rem);
     }
     button.tag:hover {
       background: #111;
@@ -272,15 +262,14 @@
       background: #111;
       color: #fff;
     }
-    button.tag[title="Notes"] { font-size: 0.9rem; }
 
     /* grid icon for photos button */
     .grid-icon {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2px;
-      width: 8px;
-      height: 8px;
+      gap: 1.5px;
+      width: 7px;
+      height: 7px;
     }
     .grid-icon span { background: currentColor; display: block; border-radius: 0.5px; }
 
@@ -366,25 +355,12 @@
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
-    .lightbox-inner {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      animation: lb-in 0.2s ease;
-    }
     .lightbox img {
+      position: relative;
       width: min(520px, 65vw); height: auto;
       border-radius: 4px;
       box-shadow: 0 6px 32px rgba(0,0,0,0.15);
-    }
-    .lightbox-caption {
-      font-size: 0.7rem;
-      color: #111;
-      margin-top: 0.4rem;
-      text-align: right;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      pointer-events: none;
+      animation: lb-in 0.2s ease;
     }
     @keyframes lb-in {
       from { opacity: 0; transform: scale(0.96); }
@@ -433,14 +409,12 @@
         grid-template-columns: 2.2rem 1fr;
         grid-template-rows: auto auto;
         column-gap: 0.75rem;
-        row-gap: 0.35rem;
+        row-gap: 0.3rem;
         align-items: start;
-        padding: 0.85rem 0;
       }
       .row-num  { grid-column: 1; grid-row: 1 / 3; align-self: center; }
       .row-name { grid-column: 2; grid-row: 1; font-size: 0.85rem; }
       .row-tags { grid-column: 2; grid-row: 2; flex-wrap: wrap; gap: 0.25rem; }
-      .tag { font-size: 0.75rem; }
 
       .detail-inner { padding-left: 0; grid-template-columns: 1fr; }
       .detail-photos { max-width: 100%; }
@@ -453,16 +427,162 @@
 </head>
 <body>
 
-{{ content | safe }}
-
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <div class="lightbox-backdrop"></div>
-  <div class="lightbox-inner">
-    <img id="lightbox-img" src="" alt="">
-    <span class="lightbox-caption" id="lightbox-caption"></span>
+  <div class="header-line">
+    <h1>Open&nbsp;Drafts</h1>
+    <span class="tagline">(Research Colloquium)</span>
   </div>
-</div>
+
+  <div class="intro-row">
+    <div class="intro-col-a">
+      <p>Open Draft is a research colloquium focusing on open-ended questions. We invite researchers and practitioners across the HfG &amp; ZKM to present their ongoing research projects.</p>
+      <p>What are you curious about right now? What are some the ideas that you are toying with? What presentation formats are you trying out? What dead-ends are you looking for a way out of?</p>
+    </div>
+    <div class="intro-col-b">
+      <p>We convene monthly at the HfG to offer a space to exchange, workshop and bounce ideas across disciplines and career stages.</p>
+      <p>All sessions take place at the <em>Lichtbrücke</em> and start at 18:00.</p>
+    </div>
+    <div class="intro-meta">
+      <a href="https://hfg-karlsruhe.de/" target="_blank">HfG Karlsruhe</a> 2025/2026
+    </div>
+  </div>
+
+  <!-- ── Summer 2026 ── -->
+  <div class="semester-label">Summer Semester 2026</div>
+  <ul class="session-table">
+
+    <li class="session-row">
+      <div class="row-main">
+        <span class="row-num">01</span>
+        <span class="row-name">
+          <a href="https://abdelammeer.com/" target="_blank">Abdelhamid Ameur</a>
+          &nbsp;/&nbsp;
+          <a href="https://merediththomas.co.uk/" target="_blank">Meredith Thomas</a>
+        </span>
+        <div class="row-tags">
+          <span class="tag tag-affil">KD</span>
+          <span class="tag tag-date c1">23.04</span>
+        </div>
+      </div>
+    </li>
+
+    <li class="session-row has-detail" id="row-clara">
+      <div class="row-main">
+        <span class="row-num">02</span>
+        <span class="row-name">
+          <a href="https://zkm.de/de/personen/clara-runge" target="_blank" onclick="event.stopPropagation()">Clara Runge</a>
+          &nbsp;—&nbsp;<em><a href="https://zkm.de/en/2026/11/hidden-on-tape-early-video-art-in-europe" target="_blank" onclick="event.stopPropagation()">Hidden on Tape</a></em>
+        </span>
+        <div class="row-tags">
+          <span class="tag tag-affil">ZKM</span>
+          <span class="tag tag-date c2">07.05</span>
+          <button class="tag" onclick="event.stopPropagation(); toggleExpand('row-clara')" title="Notes">+</button>
+          <button class="tag" onclick="event.stopPropagation(); togglePhotos('row-clara')" title="Photos">
+            <span class="grid-icon"><span></span><span></span><span></span><span></span></span>
+          </button>
+        </div>
+      </div>
+      <div class="row-detail" id="row-clara-expand" style="display:none;max-height:none;"></div>
+      <div class="row-detail" id="row-clara-photos">
+        <div class="detail-inner photos-only">
+          <div class="detail-photos">
+            <img src="images/clara-1.jpg" alt="" onclick="event.stopPropagation(); openLightbox(this.src)">
+            <img src="images/clara-2.jpg" alt="" onclick="event.stopPropagation(); openLightbox(this.src)">
+            <img src="images/clara-3.jpg" alt="" onclick="event.stopPropagation(); openLightbox(this.src)">
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li class="session-row has-detail is-upnext" id="row-paul">
+      <div class="row-main">
+        <span class="row-num">03</span>
+        <span class="row-name">
+          <a href="http://www.misterpaulbailey.com/" target="_blank" onclick="event.stopPropagation()">Prof. Paul Bailey</a>
+          &nbsp;—&nbsp;<em>Compilation v.5</em>
+          &nbsp;<span class="upnext-label">(up next)</span>
+        </span>
+        <div class="row-tags">
+          <span class="tag tag-affil">KD</span>
+          <span class="tag tag-date tag-upnext">28.05</span>
+          <button class="tag" onclick="event.stopPropagation(); toggleExpand('row-paul')" title="Notes">+</button>
+        </div>
+      </div>
+      <div class="row-detail" id="row-paul-expand">
+        <div class="detail-inner">
+          <p class="detail-text">Prof. Paul Bailey (HfG) will perform an active essay drawn from his intermittent PhD research on the visual essay as a critical instrument within/through contemporary practices of communication design. Taking <em>Meeting Grounds: Essay as Event</em> as its point of departure — gatherings at Centre for Other Worlds (PT), Kunsthal Gent (BE), Camden Arts Centre (UK), and ZKM Pavillon (DE) with Brian Dillon, Ima-Abasi Okon, Katja Mater, Metahaven, Kameelah Janan Rasheed, and Dayna Casey — the presentation will explore modes of essaying that are active, wayward, incomplete, relational, and resolutely ongoing.</p>
+        </div>
+      </div>
+    </li>
+
+    <li class="session-row">
+      <div class="row-main">
+        <span class="row-num">04</span>
+        <span class="row-name muted">More information soon</span>
+        <div class="row-tags">
+          <span class="tag tag-date c4">15.07</span>
+        </div>
+      </div>
+    </li>
+
+  </ul>
+
+  <!-- ── Archive ── -->
+  <div class="archive-heading">Archive</div>
+  <div class="semester-label">Winter Semester 2025–26</div>
+  <ul class="session-table">
+    <li class="session-row">
+      <div class="row-main">
+        <span class="row-num">—</span>
+        <span class="row-name">Introductory session / Pierre Depaz</span>
+        <div class="row-tags"><span class="tag tag-affil">KuPhi</span><span class="tag tag-date c5">16.10.25</span></div>
+      </div>
+    </li>
+    <li class="session-row">
+      <div class="row-main">
+        <span class="row-num">—</span>
+        <span class="row-name">Helin Ulas / Karolina Sobel</span>
+        <div class="row-tags"><span class="tag tag-affil">MK</span><span class="tag tag-date c6">20.11.25</span></div>
+      </div>
+    </li>
+    <li class="session-row">
+      <div class="row-main">
+        <span class="row-num">—</span>
+        <span class="row-name">Lydia Xynogala / Mario Guzman</span>
+        <div class="row-tags"><span class="tag tag-affil">KuPhi</span><span class="tag tag-date c7">11.12.25</span></div>
+      </div>
+    </li>
+    <li class="session-row">
+      <div class="row-main">
+        <span class="row-num">—</span>
+        <span class="row-name">Nina Overkott / Paolo Caffoni</span>
+        <div class="row-tags"><span class="tag tag-affil">KD / KuPhi</span><span class="tag tag-date c8">22.01.26</span></div>
+      </div>
+    </li>
+    <li class="session-row">
+      <div class="row-main">
+        <span class="row-num">—</span>
+        <span class="row-name">Idis Hartmann / Julia Modes</span>
+        <div class="row-tags"><span class="tag tag-affil">ZKM / KuPhi</span><span class="tag tag-date c9">05.02.26</span></div>
+      </div>
+    </li>
+  </ul>
+
+  <div class="bottom-row">
+    <div class="bottom-contact">
+      <p>To participate and share ongoing work, write one of the organisers:</p>
+      <p><a href="mailto:lxynogala@hfg-karlsruhe.de">lxynogala@hfg-karlsruhe.de</a></p>
+      <p><a href="mailto:hulas@hfg-karlsruhe.de">hulas@hfg-karlsruhe.de</a></p>
+    </div>
+    <div class="bottom-meta">
+      <a href="https://hfg-karlsruhe.de/" target="_blank">HfG Karlsruhe</a> 2025/2026
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <div class="lightbox-backdrop"></div>
+    <img id="lightbox-img" src="" alt="">
+  </div>
 
 <script>
   function toggleExpand(rowId) {
@@ -481,9 +601,8 @@
     if (btn) btn.classList.toggle('open', isOpen);
   }
 
-  function openLightbox(src, caption) {
+  function openLightbox(src) {
     document.getElementById('lightbox-img').src = src;
-    document.getElementById('lightbox-caption').textContent = caption || '';
     document.getElementById('lightbox').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
