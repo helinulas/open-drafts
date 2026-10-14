@@ -75,7 +75,7 @@ layout: base.njk
 
           <span class="row-name{% if session.data.tba %} muted{% endif %}">
             {% if session.data.tba %}
-              More information soon
+              {% if session.data.tba_message %}{{ session.data.tba_message }}{% else %}More information soon{% endif %}
             {% else %}
               {# Render speakers #}
               {% for speaker in session.data.speakers %}
