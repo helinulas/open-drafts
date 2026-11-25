@@ -35,6 +35,20 @@ module.exports = function(eleventyConfig) {
     return url;
   });
 
+  // Markdown: external links open in a new tab
+  eleventyConfig.amendLibrary("md", md => {
+    const defaultRender = md.renderer.rules.link_open ||
+      ((tokens, idx, options, env, self) => self.renderToken(tokens, idx, options));
+    md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
+      const href = tokens[idx].attrGet("href") || "";
+      if (/^https?:\/\//.test(href)) {
+        tokens[idx].attrSet("target", "_blank");
+        tokens[idx].attrSet("rel", "noopener");
+      }
+      return defaultRender(tokens, idx, options, env, self);
+    };
+  });
+
   // Filter: render markdown string
   eleventyConfig.addFilter("markdownify", function(str) {
     if (!str) return "";

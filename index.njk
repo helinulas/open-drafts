@@ -120,7 +120,7 @@ layout: base.njk
         {% if hasBody %}
           <div class="row-detail" id="{{ rowId }}-expand">
             <div class="detail-inner{% if not hasPhotos %} text-only{% endif %}">
-              <div class="detail-text">{{ session.templateContent | safe }}</div>
+              <div class="detail-text" onclick="event.stopPropagation()">{{ session.templateContent | safe }}</div>
             </div>
           </div>
         {% endif %}
